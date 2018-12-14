@@ -2,7 +2,7 @@
 #include<stdbool.h>
 
 
-    int x,t,n,ti,ni,l[20000],b[20000],r[20000],u[20000],solvable=0,result=0;
+    int t,n,ti,ni,l[20000],b[20000],r[20000],u[20000],solvable=0,result=0;
 
 
 void left(){
@@ -90,7 +90,7 @@ int main(){
 
                    printf("Values: %d %d %d %d\n", l[ni],b[ni], r[ni], u[ni]);
                    if( (b[ni] - u[ni])==1 || (b[ni] - u[ni])==-1){
-                        printf("x:%d",b[ni] - u[ni]);
+                  
                         solvable++;
                 }
 
