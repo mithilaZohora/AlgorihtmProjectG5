@@ -1,64 +1,68 @@
 #include<stdio.h>
-#include<stdbool.h>
+
+    int t,n,ti,ni,l[20000],b[20000],r[20000],u[20000],solvable=0,result,moveLeft=0,moveBottom=0,moveUp=0,moveRight=0;
 
 
-    int t,n,ti,ni,l[20000],b[20000],r[20000],u[20000],solvable=0,result=0;
-
-
-void left(){
-    if(l[ni]>l[ni+1]){
-        l[ni+1]=l[ni+1]+1;
-        result++;
-    } else if(l[ni]<l[ni+1]){
-        l[ni+1]=l[ni+1]-1;
-        result++;
-    }
-}
-
-void bottom(){
+void bottomOrUp(){
     if(b[ni]>b[ni+1]){
         b[ni+1]=b[ni+1]+1;
-        result++;
+        moveUp++;
+
     } else if(b[ni]<b[ni+1]){
         b[ni+1]=b[ni+1]-1;
-        result++;
-    }
-}
-void right(){
-    if(r[ni]>r[ni+1]){
-        r[ni+1]=r[ni+1]+1;
-        result++;
-    } else if(r[ni]<r[ni+1]){
-        r[ni+1]=r[ni+1]-1;
-        result++;
+        moveBottom++;
+
     }
 }
 
-void up(){
-    if(u[ni]>u[ni+1]){
-        u[ni+1]=u[ni+1]+1;
-        result++;
-    } else if(u[ni]<u[ni+1]){
-        u[ni+1]=u[ni+1]-1;
-        result++;
+
+void leftOrRight(){
+    if(l[ni]>l[ni+1]){
+        l[ni+1]=l[ni+1]+1;
+        moveRight++;
+    } else if(l[ni]<l[ni+1]){
+        l[ni+1]=l[ni+1]-1;
+        moveLeft++;
     }
 }
+
 
 void match(){
 
-    for(ni=0;ni<n;ni++){
-                  
+   for(ni=0;ni<n;ni++){
+
+        //bottom match
         if(b[ni]==b[ni+1]){
-            while(l[ni]!=l[ni+1]){
-                  left();
-            }
-             if(l[ni]==l[ni+1]){
-                    break;
-                  }
+                while(l[0]!=l[ni+1]){
+
+                    leftOrRight();
 
                 }
-    }
-        printf("Steps %d", result);
+                if(l[0]=l[ni+1]){
+                    break;
+                }
+
+
+
+                }
+                //left match
+        if(l[ni]==l[ni+1]){
+                while(b[0]!=b[ni+1]){
+
+                    bottomOrUp();
+
+                }
+                if(b[0]=b[ni+1]){
+                    break;
+                }
+
+
+
+                }
+
+
+   }
+
 }
 
 void isSolvable(){
@@ -66,7 +70,8 @@ void isSolvable(){
     if(solvable>1) {
          printf("Puzzle can be solved\n");
          match();
-         printf("%d", result);
+        result=moveRight+moveLeft+moveBottom+moveUp;
+            printf("Steps %d", result);
     } else{
         printf("Puzzle can't be solved");
     }
@@ -91,14 +96,13 @@ int main(){
                    printf("Enter the points of the rectangle %d: (sequentially left, bottom, right and up)\n", ni+1);
                   scanf("%d %d %d %d", &l[ni],&b[ni], &r[ni], &u[ni]);
 
-
-                   printf("Values: %d %d %d %d\n", l[ni],b[ni], r[ni], u[ni]);
                    if( (b[ni] - u[ni])==1 || (b[ni] - u[ni])==-1){
-                  
                         solvable++;
+
                 }
 
                 }
+
 
         }
             }
@@ -111,3 +115,4 @@ int main(){
 
     return 0;
 }
+
