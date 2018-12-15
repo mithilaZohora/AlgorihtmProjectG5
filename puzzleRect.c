@@ -47,14 +47,18 @@ void up(){
 void match(){
 
     for(ni=0;ni<n;ni++){
-        if(l[ni]==l[ni+1]){
-            if(b[ni]!=b[ni+1]){
-                while(b[ni]==b[ni+1]){
-                bottom();
-                }
+                  
+        if(b[ni]==b[ni+1]){
+            while(l[ni]!=l[ni+1]){
+                  left();
             }
-        }
+             if(l[ni]==l[ni+1]){
+                    break;
+                  }
+
+                }
     }
+        printf("Steps %d", result);
 }
 
 void isSolvable(){
