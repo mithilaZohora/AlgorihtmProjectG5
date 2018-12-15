@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-    int t,n,ti,ni,l[20000],b[20000],r[20000],u[20000],solvable=0,result,moveLeft=0,moveBottom=0,moveUp=0,moveRight=0;
+    int t,n,ti,ni,l[20000],b[20000],r[20000],u[20000],solvable=0,result,moveLeft=0,moveBottom=0,moveUp=0,moveRight=0, height1,height2;
 
 
 void bottomOrUp(){
@@ -67,6 +67,16 @@ void match(){
 
 void isSolvable(){
 
+    height1=b[0] - u[0];
+
+    for(ni=0;ni<n;ni++){
+            height2=b[ni] - u[ni];
+    if(   abs(height1)==abs(height2) ){
+                        solvable++;
+
+                }
+    }
+
     if(solvable>1) {
          printf("Puzzle can be solved\n");
          match();
@@ -96,10 +106,6 @@ int main(){
                    printf("Enter the points of the rectangle %d: (sequentially left, bottom, right and up)\n", ni+1);
                   scanf("%d %d %d %d", &l[ni],&b[ni], &r[ni], &u[ni]);
 
-                   if( (b[ni] - u[ni])==1 || (b[ni] - u[ni])==-1){
-                        solvable++;
-
-                }
 
                 }
 
