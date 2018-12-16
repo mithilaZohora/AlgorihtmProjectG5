@@ -94,8 +94,6 @@ void isSolvable(){
          match();
         result=moveRight+moveLeft+moveBottom+moveUp;
             printf("\nSteps required %d\n", result);
-    } else{
-        printf("Puzzle can't be solved\n");
     }
 
 }
@@ -106,7 +104,7 @@ void rectOutOfRange(){
         printf("Total number of Rectangles is out of Range\n");
     }
 
-    printf("Total number of Rectangles: %d", sumOfRect);
+    printf("\nTotal number of Rectangles: %d", sumOfRect);
 }
 
 
@@ -173,3 +171,4 @@ int main(){
 
     return 0;
 }
+
