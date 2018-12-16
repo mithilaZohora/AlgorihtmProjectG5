@@ -11,6 +11,9 @@ void bottomOrUp(){
     } else if(b[ni]<b[ni+1]){
         b[ni+1]=b[ni+1]-1;
         moveBottom++;
+        
+        
+        
 
     }
 }
