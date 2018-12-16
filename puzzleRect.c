@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-    int t,n,ti,ni,l[20000],b[20000],r[20000],u[20000],solvable=0,result,moveLeft=0,moveBottom=0,moveUp=0,moveRight=0, height1,height2,sumOfRect=0,rect;
+    int t,n,ti,ni,l[20000],b[20000],r[20000],u[20000],solvable=0,result,moveLeft=0,moveBottom=0,moveUp=0,moveRight=0, height1,height2,sumOfRect=0;
 
 
 void bottomOrUp(){
@@ -82,14 +82,18 @@ void isSolvable(){
     if(   abs(height1)==abs(height2) ){
                         solvable++;
 
+                } else{
+                printf("Puzzle can't be solved\n");
+                return 0;
                 }
+
     }
 
-    if(solvable==n) {
-         printf("Puzzle can be solved\n");
+    if(solvable>1) {
+         printf("\nPuzzle can be solved\n");
          match();
         result=moveRight+moveLeft+moveBottom+moveUp;
-            printf("Steps %d\n", result);
+            printf("\nSteps required %d\n", result);
     } else{
         printf("Puzzle can't be solved\n");
     }
@@ -102,23 +106,9 @@ void rectOutOfRange(){
         printf("Total number of Rectangles is out of Range\n");
     }
 
-    printf("Number of Rectangles: %d", sumOfRect);
+    printf("Total number of Rectangles: %d", sumOfRect);
 }
 
-void pointRange(){
-
-        for(ni=0;ni<n;ni++){
-
-            if( ((l[ni] && b[ni] && r[ni] && u[ni])>=-109) && ((l[ni] && b[ni] && r[ni] && u[ni])<=109) ){
-                   isSolvable();
-
-            } else{
-                printf("Points out of Range\n");
-            }
-    }
-
-
-}
 
 int main(){
 
@@ -146,6 +136,22 @@ int main(){
                    printf("Enter the points of the rectangle %d: (sequentially left, bottom, right and up)\n", ni+1);
                   scanf("%d %d %d %d", &l[ni],&b[ni], &r[ni], &u[ni]);
 
+                    if( l[ni] <=-109 || l[ni]>=109 ){
+                   printf("Rectangle Point out of Range\n");
+                   break;
+            }
+             if( b[ni] <=-109 || b[ni]>=109 ){
+                   printf("Rectangle Point out of Range\n");
+                   break;
+            }
+            if( r[ni] <=-109 || r[ni]>=109 ){
+                   printf("Rectangle Point out of Range\n");
+                   break;
+            }
+            if( u[ni] <=-109 || u[ni]>=109 ){
+                   printf("Rectangle Point out of Range\n");
+                   break;
+            }
 
                 }
 
@@ -153,7 +159,7 @@ int main(){
         }   else{
                 printf("Number of Rectangle is out of Range\n");
             }
-            pointRange();
+            isSolvable();
         }
 
 
