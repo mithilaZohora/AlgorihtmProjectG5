@@ -6,6 +6,7 @@
 void bottomOrUp(){
     if(b[ni]>b[ni+1]){
         b[ni+1]=b[ni+1]+1;
+        
         moveUp++;
 
     } else if(b[ni]<b[ni+1]){
