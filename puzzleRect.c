@@ -12,6 +12,7 @@ void bottomOrUp(){
     */
     if(b[ni]>b[ni+1]){
         b[ni+1]=b[ni+1]+1;
+        
         moveUp++;
 
     } // if other rectangles bottom point is greater than the comparing rectangle's bottom point, it will move bottom 
